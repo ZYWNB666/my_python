@@ -14,6 +14,6 @@ if __name__ == '__main__':
     print_hi('ZhangYan')
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
-print('今天开始学习Python')
+print('今天开始学习Python吗？')
 a = input('请输入：')
 print(a)
