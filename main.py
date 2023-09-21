@@ -40,6 +40,10 @@ def convert_to_json():
             with open(json_file, 'w', encoding='utf-8') as json_out:
                 json.dump(data_dict, json_out, ensure_ascii=False, indent=4)
 
+            json_file = f"{output_dir}/output.json"  # 替换为你的JSON文件路径
+            with open(json_file, 'r', encoding='utf-8') as file:
+                data = json.load(file)
+
             result_label.config(text=f'转换完成，JSON文件已保存到 {json_file}', fg='green')
         except Exception as e:
             result_label.config(text=f'转换失败: {str(e)}', fg='red')
@@ -68,3 +72,4 @@ result_label.grid(row=3, column=0, columnspan=4, padx=10, pady=10)
 
 # 运行GUI主循环
 root.mainloop()
+
