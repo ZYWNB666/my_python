@@ -4,4 +4,7 @@
     <option name="sdkUUID" value="06784b53-598a-4fdc-901a-1c6085864277" />
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.11 (python)" project-jdk-type="Python SDK" />
+  <component name="PyCharmProfessionalAdvertiser">
+    <option name="shown" value="true" />
+  </component>
 </project>
