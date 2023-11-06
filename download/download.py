@@ -1,0 +1,61 @@
+import requests
+from flask import Flask, request, render_template, session, redirect, url_for
+
+app = Flask(__name__)
+
+app.secret_key = 'your_secret_key'  # 设置会话的密钥，用于存储URL
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        url = request.form['url']
+        if url:
+            api_url = f"https://cdn30.savetube.me/info?url={url}"
+            response = requests.get(api_url)
+            if response.status_code == 200:
+                download_data = response.json()  # 解析JSON响应
+                url_720p = None
+                for video_format in download_data["data"]["video_formats"]:
+                    if video_format["label"] == "720p":
+                        url_720p = video_format["url"]
+                        break
+
+                if url_720p:
+                    # 存储URL在会话中
+                    session['download_url'] = url_720p
+                    return redirect(url_for('index'))  # 重定向到当前页面
+                else:
+                    return "URL not found"
+            else:
+                return f"Failed to download URL. Status code: {response.status_code}"
+
+    return render_template('index.html')
+
+
+
+@app.route('/download')
+def url_download():
+    url = request.args.get('url')
+    if url:
+        api_url = f"https://cdn30.savetube.me/info?url={url}"
+        response = requests.get(api_url)
+        if response.status_code == 200:
+            download_data = response.json()  # 解析JSON响应
+            url_720p = None
+            for video_format in download_data["data"]["video_formats"]:
+                if video_format["label"] == "720p":
+                    url_720p = video_format["url"]
+                    break
+
+            if url_720p:
+                # 存储URL在会话中
+                session['download_url'] = url_720p
+                return redirect(url_for('index'))  # 重定向到当前页面
+            else:
+                return "URL not found"
+        else:
+            return f"Failed to download URL. Status code: {response.status_code}"
+    return render_template('index.html')
+
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=8000)

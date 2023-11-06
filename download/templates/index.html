@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>URL Download Tool</title>
+</head>
+<body>
+    <h1>YouTube下载工具(需科学上网)</h1>
+    <form method="POST">
+        <label for="url">请输入URL:</label>
+        <input type="text" id="url" name="url" required>
+        <button type="submit">点击下载</button>
+    </form>
+
+    {% if 'download_url' in session %}
+    <p><a href="{{ session['download_url'] }}" target="_blank">点我下载视频</a></p>
+    {% endif %}
+</body>
+</html>
