@@ -1,0 +1,27 @@
+import subprocess
+
+from flask import Flask, request
+
+app = Flask(__name__)
+
+
+@app.route('/serverip')
+def serverip():
+    command = "curl -s checkip.amazonaws.com | grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}'"
+    try:
+        ip = subprocess.check_output(command, shell=True).decode('utf-8').strip()
+        return f"Your public IP address is: {ip}"
+    except subprocess.CalledProcessError:
+        return "Failed to fetch your public IP address."
+@app.route('/')
+def get_client_ip():
+    x_forwarded_for = request.headers.get('X-Forwarded-For')
+    if x_forwarded_for:
+        client_ip = x_forwarded_for.split(',')[0]
+    else:
+        client_ip = request.remote_addr
+    return f"{client_ip}"
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8000)
