@@ -1,0 +1,3 @@
+curl -X POST "https://tomail.netwebs.top/" -d "mail=test1@163.com,test2@qq.com,test...&subject=邮件标题&html_content=邮件内容(支持HTML文本)"
+1、支持多个邮箱地址，用英文逗号分隔
+2、支持HTML文本内容

@@ -1,40 +1,27 @@
-# import json
+# import random
 #
-# import requests
+# # 生成6个1到33之间的随机整数
+# random_integers_33 = [random.randint(1, 33) for _ in range(6)]
 #
-# apikey = "EXPBZ-X5DHM-YMO6C-6YBL5-AGA3S-ALBOL"
+# # 生成1个1到16之间的随机整数
+# random_integer_16 = random.randint(1, 16)
 #
-# # response = requests.get("https://opendata.baidu.com/api.php?query=192.6.66.6&co=&resource_id=6006&oe=utf8")
-# response = requests.get(f"https://apis.map.qq.com/ws/location/v1/ip?ip=111.206.145.41&key={apikey}")
-# data = json.loads(response.text)
-# # print(data)
-# # 提取所需字段
-# ip = data['result']['ip']
-# nation = data['result']['ad_info']['nation']
-# province = data['result']['ad_info']['province']
-# city = data['result']['ad_info']['city']
-# district = data['result']['ad_info']['district']
-# lat = data['result']['location']['lat']
-# lng = data['result']['location']['lng']
-# print("IP:", ip)
-# print("国家:", nation)
-# print("地址:", province,city,district)
-# print("经纬度:", lat, lng)
+# # 输出生成的随机整数
+# print("6个1到33之间的随机整数:", random_integers_33)
+# print("1个1到16之间的随机整数:", random_integer_16)
+import random
 
+# 随机生成6个1-33之间的整数
+rand_num = [random.randint(1, 33) for _ in range(6)]
 
-from flask import Flask, request
+# 随机生成1个1-16范围内的整数
+rand_bonus_num = random.randint(1, 16)
 
-app = Flask(__name__)
+# 输出这些数字
+print("6个1-33之间的整数是：", rand_num)
+print("1个1-16范围内的整数是：", rand_bonus_num)
 
-
-@app.route('/')
-def check_browser_and_os():
-    user_agent = request.user_agent.string
-
-    # 判断是否是浏览器和操作系统
-    if "Mozilla" in user_agent:
-        return "这是一个 Windows 操作系统的浏览器访问"
-
-
-if __name__ == '__main__':
-    app.run()
+# # test
+# for num in rand_num:
+#     print(num)
+# print(bonus_num)
