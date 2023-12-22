@@ -11,7 +11,7 @@ def send_email(to_emails, subject, html_content):
     mail_server = "smtp.qq.com"
     port = 587  # 根据您的邮件服务器要求进行更改
     from_email = "ops-alarm@qq.com"
-    password = "eaikqbptkxjsdjdi"
+    password = "eaik*******jdi"
 
     # 创建邮件
     message = MIMEMultipart()
