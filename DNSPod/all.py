@@ -7,7 +7,7 @@ from tencentcloud.common.profile.http_profile import HttpProfile
 from tencentcloud.dnspod.v20210323 import dnspod_client, models
 
 try:
-    cred = credential.Credential("AKIDToqpiW9e086sW2TnvuhPxJT5cu8E9rPn", "Vs31kFe1NZjtDPaf3RhtFOL6e2Ldonie")
+    cred = credential.Credential("AKID**************E9rPn", "Vs31*****************ie")
     httpProfile = HttpProfile()
     httpProfile.endpoint = "dnspod.tencentcloudapi.com"
     clientProfile = ClientProfile()
