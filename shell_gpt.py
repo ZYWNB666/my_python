@@ -3,7 +3,7 @@ import argparse
 import json
 import os
 
-os.environ['OPENAI_API_KEY'] = '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'
+os.environ['OPENAI_API_KEY'] = 'sk-XN5z*********************Ho4Z'
 
 from openai import ChatCompletion
 import openai
